@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from '../Link';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -7,8 +7,8 @@ import Button from '@material-ui/core/Button';
 import ButtonArrow from './ButonArrow';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-import background from '../../assets/background.jpg';
-import mobileBackground from '../../assets/mobileBackground.jpg';
+const background = '/assets/background.jpg';
+const mobileBackground = '/assets/mobileBackground.jpg';
 
 const useStyles = makeStyles((theme) => ({
   learnButton: {
@@ -78,7 +78,7 @@ export default function CallToAction({ setValue }) {
             <Grid item container justify={matchesSM ? 'center' : 'flex-start'}>
               <Button
                 component={Link}
-                to="/revolution"
+                href="/revolution"
                 onClick={() => {
                   setValue(2);
                 }}
@@ -99,7 +99,7 @@ export default function CallToAction({ setValue }) {
       <Grid item>
         <Button
           component={Link}
-          to="/estimate"
+          href="/estimate"
           onClick={() => {
             setValue(5);
           }}

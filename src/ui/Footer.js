@@ -2,13 +2,13 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
-import { Link } from 'react-router-dom';
+import Link from '../Link';
 
-import facebook from '../../assets/facebook.svg';
-import twitter from '../../assets/twitter.svg';
-import instagram from '../../assets/instagram.svg';
+const facebook = '/assets/facebook.svg';
+const twitter = '/assets/twitter.svg';
+const instagram = '/assets/instagram.svg';
 
-import footerAdornment from '../../assets/Footer Adornment.svg';
+const footerAdornment = '/assets/footerAdornment.svg';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -77,7 +77,7 @@ export default function Footer({ setSelectedIndex, setValue }) {
               <Grid
                 item
                 component={Link}
-                to="/"
+                href="/"
                 className={classes.link}
                 onClick={() => setValue(0)}
               >
@@ -90,7 +90,7 @@ export default function Footer({ setSelectedIndex, setValue }) {
               <Grid
                 item
                 component={Link}
-                to="/services"
+                href="/services"
                 className={classes.link}
                 onClick={() => {
                   setValue(1);
@@ -102,7 +102,7 @@ export default function Footer({ setSelectedIndex, setValue }) {
               <Grid
                 item
                 component={Link}
-                to="/customsoftware"
+                href="/customsoftware"
                 className={classes.link}
                 onClick={() => {
                   setValue(1);
@@ -114,7 +114,7 @@ export default function Footer({ setSelectedIndex, setValue }) {
               <Grid
                 item
                 component={Link}
-                to="/mobileapps"
+                href="/mobileapps"
                 className={classes.link}
                 onClick={() => {
                   setValue(1);
@@ -126,7 +126,7 @@ export default function Footer({ setSelectedIndex, setValue }) {
               <Grid
                 item
                 component={Link}
-                to="/websites"
+                href="/websites"
                 className={classes.link}
                 onClick={() => {
                   setValue(1);
@@ -142,7 +142,7 @@ export default function Footer({ setSelectedIndex, setValue }) {
               <Grid
                 item
                 component={Link}
-                to="/revolution"
+                href="/revolution"
                 className={classes.link}
                 onClick={() => setValue(2)}
               >
@@ -151,7 +151,7 @@ export default function Footer({ setSelectedIndex, setValue }) {
               <Grid
                 item
                 component={Link}
-                to="/revolution"
+                href="/revolution"
                 className={classes.link}
                 onClick={() => setValue(2)}
               >
@@ -160,7 +160,7 @@ export default function Footer({ setSelectedIndex, setValue }) {
               <Grid
                 item
                 component={Link}
-                to="/revolution"
+                href="/revolution"
                 className={classes.link}
                 onClick={() => setValue(2)}
               >
@@ -169,7 +169,7 @@ export default function Footer({ setSelectedIndex, setValue }) {
               <Grid
                 item
                 component={Link}
-                to="/revolution"
+                href="/revolution"
                 className={classes.link}
                 onClick={() => setValue(2)}
               >
@@ -182,7 +182,7 @@ export default function Footer({ setSelectedIndex, setValue }) {
               <Grid
                 item
                 component={Link}
-                to="/about"
+                href="/about"
                 className={classes.link}
                 onClick={() => setValue(3)}
               >
@@ -191,7 +191,7 @@ export default function Footer({ setSelectedIndex, setValue }) {
               <Grid
                 item
                 component={Link}
-                to="/about"
+                href="/about"
                 className={classes.link}
                 onClick={() => setValue(3)}
               >
@@ -200,7 +200,7 @@ export default function Footer({ setSelectedIndex, setValue }) {
               <Grid
                 item
                 component={Link}
-                to="/about"
+                href="/about"
                 className={classes.link}
                 onClick={() => setValue(3)}
               >
@@ -213,7 +213,7 @@ export default function Footer({ setSelectedIndex, setValue }) {
               <Grid
                 item
                 component={Link}
-                to="contact"
+                href="contact"
                 className={classes.link}
                 onClick={() => setValue(4)}
               >

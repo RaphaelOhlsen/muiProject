@@ -9,19 +9,18 @@ import Tab from '@material-ui/core/Tab';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Hidden from '@material-ui/core/Hidden';
 
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { Link } from 'react-router-dom';
+import Link from '../Link';
 
-import logo from '../../assets/logo.svg';
+const logo = '/assets/logo.svg';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -49,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     height: '8em',
+    textTransform: 'none',
     [theme.breakpoints.down('md')]: {
       height: '7em',
     },
@@ -83,6 +83,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
     borderRadius: 0,
+    zIndex: 1302,
   },
   menuItem: {
     ...theme.typography.tab,
@@ -130,9 +131,7 @@ export default function Header({
   setValue,
 }) {
   const classes = useStyles();
-  const theme = useTheme();
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const matches = useMediaQuery(theme.breakpoints.down('md'));
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
@@ -239,7 +238,9 @@ export default function Header({
           }
           break;
         case '/estimate':
-          setValue(5);
+          if (value !== 5) {
+            setValue(5);
+          }
           break;
         default:
           break;
@@ -260,7 +261,7 @@ export default function Header({
             key={`tab-${index}`}
             className={classes.tab}
             component={Link}
-            to={route.link}
+            href={route.link}
             label={route.name}
             aria-owns={route.ariaOwns}
             aria-haspopup={route.ariaPopup}
@@ -273,7 +274,7 @@ export default function Header({
         color="secondary"
         className={classes.button}
         component={Link}
-        to="/estimate"
+        href="/estimate"
         onClick={() => setValue(5)}
       >
         Free Estimate
@@ -297,7 +298,7 @@ export default function Header({
             }}
             selected={index === selectedIndex && value === 1}
             component={Link}
-            to={menuOption.link}
+            href={menuOption.link}
             classes={{ root: classes.menuItem }}
           >
             {menuOption.name}
@@ -325,7 +326,7 @@ export default function Header({
               key={`list-${index}`}
               button
               component={Link}
-              to={route.link}
+              href={route.link}
               selected={value === route.activeIndex}
               classes={{ selected: classes.drawerItemSelected }}
               onClick={() => {
@@ -341,7 +342,7 @@ export default function Header({
 
           <ListItem
             component={Link}
-            to="/estimate"
+            href="/estimate"
             divider
             button
             onClick={() => {
@@ -377,14 +378,15 @@ export default function Header({
           <ToolBar disableGutters>
             <Button
               component={Link}
-              to="/"
+              href="/"
               disableRipple
               className={classes.logoContainer}
               onClick={() => setValue(0)}
             >
               <img src={logo} alt="company logo" className={classes.logo} />
             </Button>
-            {matches ? drawer : tabs}
+            <Hidden mdDown>{tabs}</Hidden>
+            <Hidden lgUp>{drawer}</Hidden>
           </ToolBar>
         </AppBar>
       </ElevationScroll>
