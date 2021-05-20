@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
-import Theme from '../src/ui/Theme';
-import Header from '../src/ui/Header';
-import Footer from '../src/ui/Footer';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+import theme from '../src/theme';
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
-  const [value, setValue] = useState(0);
-  const [selectedIndex, setSelectedIndex] = useState(0);
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -21,6 +18,7 @@ export default function MyApp(props) {
 
   return (
     <>
+      <CssBaseline />
       <Head>
         <title>My page</title>
         <meta
@@ -28,28 +26,9 @@ export default function MyApp(props) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <ThemeProvider theme={Theme}>
-        <Header
-          selectedIndex={selectedIndex}
-          setSelectedIndex={setSelectedIndex}
-          value={value}
-          setValue={setValue}
-        />
-        <Component
-          {...pageProps}
-          setSelectedIndex={setSelectedIndex}
-          setValue={setValue}
-        />
-        <Footer
-          selectedIndex={selectedIndex}
-          setSelectedIndex={setSelectedIndex}
-        />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
       </ThemeProvider>
     </>
   );
 }
-
-MyApp.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired,
-};
